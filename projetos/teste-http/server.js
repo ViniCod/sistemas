@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require ('body-parser');
 app.use (bodyParser.json());
 const porta = 3000;
-let contador = 3;
+let contador = 2;
 const clientes = [
     {
         id: 1,
@@ -25,7 +25,7 @@ app.post('/clientes', (req, res, next) => {
     const cliente = req.body;
     clientes.push({id: contador += 1, nome: cliente.nome, email: cliente.email});
     console.log(clientes);
-    res.end();
+    res.status(201).json(clientes);
 });
 const server = http.createServer(app);
 server.listen(3000);
