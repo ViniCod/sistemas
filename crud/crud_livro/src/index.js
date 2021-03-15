@@ -32,3 +32,23 @@ app.post('/livros', (req, res, next) => {
 app.get('livros', (req, res, next) => {
     res.json(livros);
 });
+app.put("/livros", (req, res, next) => {
+    livros.forEach((livro) => {
+        if (livro.id === req.body.id) {
+            livro.titulo = req.body.titulo;
+            livro.descricao = req.body.descricao;
+            livro.edicao = req.body.edicao;
+            livro.autor = req.body.autor;
+        }
+    })
+    res.status(200).json(livros);
+});
+app.delete('/livros', (req, res, next) => {
+    livros.forEach(livro=> {
+        if (livro.id === req.body.id) {
+            const index = livros.indexOf(livro, 0);
+            livros.splice(index, 1)
+        }
+    })
+    res.status(200).json(livros);
+});
