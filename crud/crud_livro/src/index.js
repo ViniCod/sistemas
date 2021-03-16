@@ -25,7 +25,7 @@ const livros = [
 app.set('port', porta);
 app.post('/livros', (req, res, next) => {
     const livro = req.body;
-    livros.push({id: contador += 1, título: livro.titulo, descrição: livro.descricao, edição: livro.edicao, autor: livro.autor});
+    livros.push({id: cont += 1, título: livro.titulo, descrição: livro.descricao, edição: livro.edicao, autor: livro.autor});
     console.log(livros);
     res.status(201).json(livros);
 })
